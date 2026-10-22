@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>INK Innovation — тату-салон в Бишкеке</title>
+<meta name="description" content="INK Innovation — современный тату-салон в Бишкеке: авторские эскизы, ИИ-подбор стиля, онлайн-запись и профессиональные мастера.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0a09;--gr:#1c1917;--wine:#9f1239;--gold:#d97706;--cream:#fef3c7;--w:#fff;--muted:#a8a29e;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit;margin:0;padding:0}
+html{scroll-padding-top:84px;height:auto}
+body{background:var(--bg);color:var(--cream);font-family:'Plus Jakarta Sans','Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.65;overflow-x:hidden;background-image:radial-gradient(900px 500px at 85% -5%,rgba(159,18,57,.28),transparent 60%),radial-gradient(700px 500px at -10% 40%,rgba(217,119,6,.12),transparent 60%);background-attachment:fixed}
+img,svg{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+section{padding:96px 0}
+h1,h2,h3{line-height:1.15;letter-spacing:-.02em;color:var(--w)}
+h2{font-size:clamp(1.9rem,4vw,2.9rem);margin-bottom:14px}
+.lead{color:var(--muted);max-width:620px;font-size:1.05rem;margin-bottom:48px}
+.grad{background:linear-gradient(100deg,var(--cream),var(--gold) 55%,#e11d48);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.glass{background:rgba(28,25,23,.6);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid rgba(254,243,199,.1);border-radius:20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 28px;border-radius:999px;border:1px solid transparent;font-weight:700;cursor:pointer;transition:box-shadow .3s,transform .3s,background .3s}
+.btn-p{background:linear-gradient(135deg,var(--wine),#be123c);color:var(--w)}
+.btn-p:hover{box-shadow:0 0 28px rgba(190,18,60,.65);transform:translateY(-2px)}
+.btn-g{border-color:rgba(217,119,6,.7);color:var(--cream);background:transparent}
+.btn-g:hover{box-shadow:0 0 26px rgba(217,119,6,.45);background:rgba(217,119,6,.1);transform:translateY(-2px)}
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.js .rv.in{opacity:1;transform:none}
+/* header */
+header{position:fixed;inset:0 0 auto 0;z-index:50;padding-top:env(safe-area-inset-top,0px);transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+header.sc{background:rgba(12,10,9,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-color:rgba(254,243,199,.08)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font-weight:800;font-size:1.3rem;letter-spacing:-.03em;color:var(--w)}
+.logo b{color:var(--gold)}
+.menu{display:flex;gap:28px;list-style:none;align-items:center}
+.menu a{font-size:.93rem;color:var(--muted);transition:color .2s}
+.menu a:hover{color:var(--cream)}
+.burger{display:none;width:44px;height:44px;border:0;background:none;cursor:pointer;position:relative}
+.burger span{position:absolute;left:11px;right:11px;height:2px;background:var(--cream);border-radius:2px;transition:.3s}
+.burger span:nth-child(1){top:15px}.burger span:nth-child(2){top:21px}.burger span:nth-child(3){top:27px}
+.burger.on span:nth-child(1){top:21px;transform:rotate(45deg)}
+.burger.on span:nth-child(2){opacity:0}
+.burger.on span:nth-child(3){top:21px;transform:rotate(-45deg)}
+/* hero */
+.hero{min-height:100svh;display:flex;align-items:center;padding:130px 0 80px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(2.6rem,6.4vw,5rem);font-weight:800;margin-bottom:22px}
+.hero p{color:var(--muted);font-size:1.12rem;max-width:520px;margin-bottom:34px}
+.cta{display:flex;flex-wrap:wrap;gap:14px}
+.hero-art{aspect-ratio:1;border-radius:50%;position:relative;display:grid;place-items:center;background:radial-gradient(circle,rgba(159,18,57,.35),transparent 68%)}
+.hero-art svg{width:86%;filter:drop-shadow(0 0 24px rgba(217,119,6,.35))}
+.hero-art .draw{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 3.4s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+/* about / services / tech */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.about p{color:var(--muted);margin-bottom:16px}
+.perks{display:grid;gap:14px}
+.perk{padding:20px 22px}
+.perk h3{font-size:1.05rem;margin-bottom:4px;color:var(--gold)}
+.perk p{margin:0;font-size:.94rem}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.card{padding:28px;transition:transform .3s,border-color .3s}
+.card:hover{transform:translateY(-4px);border-color:rgba(217,119,6,.45)}
+.card .ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(159,18,57,.5),rgba(217,119,6,.35));margin-bottom:18px}
+.card .ic svg{width:24px;height:24px;stroke:var(--cream);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:1.15rem;margin-bottom:8px}
+.card p{color:var(--muted);font-size:.95rem}
+/* gallery */
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
+.fb{padding:10px 20px;border-radius:999px;background:transparent;border:1px solid rgba(254,243,199,.2);cursor:pointer;color:var(--muted);transition:.25s}
+.fb:hover{color:var(--cream);border-color:var(--gold)}
+.fb.on{background:var(--gold);border-color:var(--gold);color:var(--bg);font-weight:700}
+.works{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.work{overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,opacity .3s,box-shadow .3s}
+.work:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(159,18,57,.25)}
+.work.hide{display:none}
+.thumb{aspect-ratio:4/3;border:0;width:100%;cursor:zoom-in;display:grid;place-items:center;padding:18px;background:linear-gradient(145deg,#1c1917,var(--c,#3b0a1a))}
+.thumb svg{width:100%;height:100%;transition:transform .5s}
+.work:hover .thumb svg{transform:scale(1.06)}
+.wb{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.wb h3{font-size:1.1rem}
+.wb p{color:var(--muted);font-size:.92rem;flex:1}
+.wf{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:6px}
+.price{font-weight:800;font-size:1.15rem;color:var(--gold)}
+.btn-s{padding:10px 20px;font-size:.9rem}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.stat{padding:34px 20px;text-align:center}
+.stat .n{font-size:clamp(2.2rem,4.5vw,3.4rem);font-weight:800;line-height:1.1}
+.stat p{color:var(--muted);margin-top:8px;font-size:.95rem}
+/* reviews */
+.rev{padding:28px;display:flex;flex-direction:column;gap:16px}
+.stars{color:var(--gold);letter-spacing:3px}
+.rev q{quotes:none;color:var(--cream);font-size:.98rem}
+.who{display:flex;align-items:center;gap:12px;margin-top:auto}
+.av{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-weight:800;background:linear-gradient(135deg,var(--wine),var(--gold));color:var(--w)}
+.who small{display:block;color:var(--muted)}
+/* form */
+.book{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:start}
+.book ul{list-style:none;display:grid;gap:12px;color:var(--muted);margin-top:22px}
+.book li::before{content:"✦ ";color:var(--gold)}
+form{padding:34px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.f{display:flex;flex-direction:column;gap:6px}
+.f.full{grid-column:1/-1}
+label{font-size:.88rem;color:var(--muted)}
+input,select,textarea{background:rgba(12,10,9,.7);border:1px solid rgba(254,243,199,.16);border-radius:12px;padding:13px 14px;width:100%;transition:border-color .2s,box-shadow .2s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(217,119,6,.2)}
+select option{background:var(--gr)}
+textarea{min-height:100px;resize:vertical}
+.err{font-size:.82rem;color:#fb7185;min-height:1em}
+.bad input,.bad select{border-color:#e11d48}
+.note{grid-column:1/-1;font-size:.82rem;color:var(--muted)}
+/* contacts */
+.ct{padding:30px}
+.ct h3{margin-bottom:10px;color:var(--gold);font-size:1.1rem}
+.ct p,.ct a{color:var(--muted);display:block}
+.ct a:hover{color:var(--cream)}
+/* footer */
+footer{border-top:1px solid rgba(254,243,199,.1);padding:56px 0 32px;background:rgba(28,25,23,.5)}
+.fg{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;margin-bottom:36px}
+footer p,footer a{color:var(--muted);font-size:.93rem;display:block;margin-bottom:6px}
+footer a:hover{color:var(--cream)}
+footer h4{color:var(--w);margin-bottom:12px}
+.copy{border-top:1px solid rgba(254,243,199,.08);padding-top:22px;color:var(--muted);font-size:.85rem}
+/* modal */
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.78);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.modal.open{display:flex;animation:fade .3s}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.mb{position:relative;width:min(640px,100%);padding:30px;text-align:center;background:rgba(28,25,23,.95)}
+.mb .thumb{cursor:default;border-radius:14px;margin-bottom:16px;aspect-ratio:4/3}
+.mb h3{margin-bottom:6px}
+.mb p{color:var(--muted);margin-bottom:18px}
+.x{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:0;background:rgba(254,243,199,.1);cursor:pointer;font-size:1.2rem}
+.x:hover{background:var(--wine)}
+.ok{width:68px;height:68px;margin:0 auto 18px;border-radius:50%;display:grid;place-items:center;font-size:2rem;background:linear-gradient(135deg,var(--wine),var(--gold))}
+/* responsive */
+@media (max-width:960px){
+.hero .wrap,.about,.book{grid-template-columns:1fr}
+.hero-art{max-width:380px;margin:0 auto;order:-1}
+.grid3,.works{grid-template-columns:repeat(2,1fr)}
+.stats{grid-template-columns:repeat(2,1fr)}
+.fg{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+section{padding:70px 0}
+.burger{display:block}
+.menu{position:fixed;top:calc(72px + env(safe-area-inset-top,0px));left:0;right:0;flex-direction:column;gap:0;background:rgba(12,10,9,.97);padding:10px 20px 24px;transform:translateY(-130%);transition:transform .35s;border-bottom:1px solid rgba(254,243,199,.1)}
+.menu.open{transform:none}
+.menu li{width:100%}
+.menu a{display:block;padding:14px 0;font-size:1.05rem;border-bottom:1px solid rgba(254,243,199,.06)}
+.grid3,.grid2,.works{grid-template-columns:1fr}
+form{grid-template-columns:1fr;padding:24px}
+.fg{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero-art .draw{stroke-dashoffset:0}.js .rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header id="hd">
+<div class="wrap nav">
+<a href="#top" class="logo" data-go>INK<b> Innovation</b></a>
+<button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span><span></span></button>
+<ul class="menu" id="menu">
+<li><a href="#about" data-go>О салоне</a></li>
+<li><a href="#services" data-go>Услуги</a></li>
+<li><a href="#tech" data-go>Технологии</a></li>
+<li><a href="#works" data-go>Работы</a></li>
+<li><a href="#reviews" data-go>Отзывы</a></li>
+<li><a href="#contacts" data-go>Контакты</a></li>
+<li><a href="#booking" class="btn btn-p btn-s" data-go>Записаться</a></li>
+</ul>
+</div>
+</header>
+
+<main id="top">
+<section class="hero">
+<div class="wrap">
+<div>
+<h1>Твоё тело — <span class="grad">твоё искусство</span></h1>
+<p>INK Innovation в Бишкеке: уникальные эскизы, ИИ-подбор стиля под вашу идею и профессиональные мастера, которые бережно переносят задуманное на кожу.</p>
+<div class="cta">
+<a href="#works" class="btn btn-g" data-go>Смотреть работы</a>
+<a href="#booking" class="btn btn-p" data-go>Записаться на сеанс</a>
+</div>
+</div>
+<div class="hero-art" aria-hidden="true">
+<svg viewBox="0 0 400 400" fill="none" stroke="#d97706" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+<circle class="draw" cx="200" cy="200" r="150" stroke="#9f1239"/>
+<path class="draw" d="M200 60v280M120 130c40 20 40 60 80 70s40 50 80 70M280 130c-40 20-40 60-80 70s-40 50-80 70"/>
+<path class="draw" d="M200 90c-30 20-30 50 0 70 30-20 30-50 0-70zM200 240c-30 20-30 50 0 70 30-20 30-50 0-70z" stroke="#fef3c7"/>
+<circle class="draw" cx="200" cy="200" r="24" stroke="#fef3c7"/>
+</svg>
+</div>
+</div>
+</section>
+
+<section id="about">
+<div class="wrap about">
+<div class="rv">
+<h2>Салон, где <span class="grad">искусство встречает технологии</span></h2>
+<p>INK Innovation открылся в Бишкеке как студия, где татуировка — это личная история, а не шаблон из каталога. Мы начинали с небольшой комнаты на Чуе и нескольких мастеров, которые не хотели набивать «как у всех».</p>
+<p>Наша миссия — чтобы каждый клиент ушёл с рисунком, который он по-настоящему понимает и любит через десять лет. Поэтому мы соединили живое мастерство художников с ИИ-инструментами: они помогают быстрее найти стиль и увидеть эскиз на своём теле ещё до первого прокола.</p>
+<p>Мы работаем только со стерильными одноразовыми расходниками и сертифицированными красками.</p>
+</div>
+<div class="perks rv">
+<div class="perk glass"><h3>Только авторские эскизы</h3><p>Каждый рисунок создаётся под вас и не повторяется у других клиентов.</p></div>
+<div class="perk glass"><h3>ИИ-подбор стиля</h3><p>Опишите идею словами — получите несколько концепций для обсуждения с мастером.</p></div>
+<div class="perk glass"><h3>Безопасность без компромиссов</h3><p>Одноразовые иглы, автоклав и обработка рабочего места перед каждым клиентом.</p></div>
+<div class="perk glass"><h3>Честные цены в сомах</h3><p>Стоимость называем до начала работы, без доплат в процессе.</p></div>
+</div>
+</div>
+</section>
+
+<section id="services">
+<div class="wrap">
+<div class="rv"><h2>Услуги и сервис</h2><p class="lead">От первой идеи до заживления: сопровождаем на каждом шаге.</p></div>
+<div class="grid3">
+<article class="card glass rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg></div><h3>Индивидуальные эскизы</h3><p>Художник рисует эскиз с нуля по вашей идее и вносит правки, пока вы не скажете «да».</p></article>
+<article class="card glass rv"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg></div><h3>Онлайн-запись</h3><p>Выберите мастера, дату и стиль на сайте. Администратор подтвердит время по телефону.</p></article>
+<article class="card glass rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></svg></div><h3>ИИ-подбор дизайна</h3><p>Нейросеть предлагает направления по вашему описанию, а мастер доводит лучший вариант.</p></article>
+<article class="card glass rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 01-11.6 7.1L4 20l1-4.6A8 8 0 1121 12z"/></svg></div><h3>Консультации мастеров</h3><p>Бесплатно обсудим размер, место на теле, уход и подходящий стиль.</p></article>
+<article class="card glass rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4zM3 12l9 4 9-4M3 17l9 4 9-4"/></svg></div><h3>Перекрытие старых тату</h3><p>Обновим или скроем неудачную работу: подберём рисунок и плотность, которые перекроют прежний.</p></article>
+<article class="card glass rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5zM5 11v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5"/></svg></div><h3>Мастер-классы</h3><p>Для начинающих тату-мастеров: техника линии, работа с машинкой, стерильность и композиция.</p></article>
+</div>
+</div>
+</section>
+
+<section id="tech">
+<div class="wrap">
+<div class="rv"><h2>Технологии на службе <span class="grad">вашей идеи</span></h2><p class="lead">Мы используем цифровые инструменты там, где они реально экономят время и снижают риск ошибки.</p></div>
+<div class="grid2">
+<article class="card glass rv"><h3>ИИ для концепций эскизов</h3><p>Вы описываете образ, ИИ показывает несколько стилистических направлений. Художник превращает выбранное в чистый авторский рисунок, который можно перенести на кожу.</p></article>
+<article class="card glass rv"><h3>Цифровая примерка на теле</h3><p>Накладываем эскиз на фото вашей руки, спины или ноги, чтобы оценить размер и положение до начала сеанса.</p></article>
+<article class="card glass rv"><h3>Электронный каталог работ</h3><p>Фото заживших работ каждого мастера с фильтрами по стилю — легко найти того, чей почерк вам близок.</p></article>
+<article class="card glass rv"><h3>Стерильное оборудование</h3><p>Одноразовые картриджи, автоклав и барьерная защита поверхностей: оборудование готовим при вас.</p></article>
+<article class="card glass rv"><h3>Мобильная система записи</h3><p>Запись, напоминание о сеансе и изменение времени — с телефона, без звонков и ожидания.</p></article>
+</div>
+</div>
+</section>
+
+<section id="works">
+<div class="wrap">
+<div class="rv"><h2>Наши работы и услуги</h2><p class="lead">Выберите стиль, посмотрите работу крупнее и сразу запишитесь. Итоговая цена зависит от размера и сложности.</p></div>
+<div class="filters rv" id="filters" role="group" aria-label="Фильтр по стилю">
+<button class="fb on" data-f="all">Все</button>
+<button class="fb" data-f="mini">Мини</button>
+<button class="fb" data-f="fine">Fine Line</button>
+<button class="fb" data-f="author">Авторские</button>
+<button class="fb" data-f="graphic">Графика</button>
+<button class="fb" data-f="sketch">Эскизы</button>
+</div>
+<div class="works" id="works-grid"></div>
+</div>
+</section>
+
+<section id="stats">
+<div class="wrap">
+<div class="stats">
+<div class="stat glass rv"><div class="n grad"><span class="cnt" data-t="1500">0</span>+</div><p>довольных клиентов</p></div>
+<div class="stat glass rv"><div class="n grad"><span class="cnt" data-t="98">0</span>%</div><p>положительных отзывов</p></div>
+<div class="stat glass rv"><div class="n grad"><span class="cnt" data-t="4.9" data-d="1">0</span>/5</div><p>демонстрационный рейтинг</p></div>
+<div class="stat glass rv"><div class="n grad"><span class="cnt" data-t="5">0</span></div><p>профессиональных мастеров</p></div>
+</div>
+</div>
+</section>
+
+<section id="reviews">
+<div class="wrap">
+<div class="rv"><h2>Что говорят клиенты</h2><p class="lead">Демонстрационные отзывы: перед запуском замените их на реальные в блоке JS ниже.</p></div>
+<div class="grid3" id="rev-grid"></div>
+</div>
+</section>
+
+<section id="booking">
+<div class="wrap book">
+<div class="rv">
+<h2>Запишитесь <span class="grad">на сеанс</span></h2>
+<p class="lead" style="margin-bottom:0">Оставьте заявку, и администратор свяжется с вами в течение часа в рабочее время, чтобы подтвердить дату.</p>
+<ul><li>Консультация и эскиз-черновик — бесплатно</li><li>Предоплата закрепляет время за вами</li><li>Перенести сеанс можно за сутки</li></ul>
+</div>
+<form class="glass rv" id="form" novalidate>
+<div class="f"><label for="name">Имя</label><input id="name" name="name" type="text" autocomplete="name" placeholder="Как к вам обращаться"><span class="err"></span></div>
+<div class="f"><label for="phone">Телефон</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+996 555 123 456"><span class="err"></span></div>
+<div class="f"><label for="master">Мастер</label><select id="master" name="master"><option value="">Выберите мастера</option><option>Любой свободный</option><option>Айдар — Fine Line</option><option>Мира — миниатюры</option><option>Тимур — графика</option><option>Элина — авторские работы</option><option>Руслан — перекрытия</option></select><span class="err"></span></div>
+<div class="f"><label for="style">Стиль татуировки</label><select id="style" name="style"><option value="">Выберите стиль</option><option value="mini">Мини-тату</option><option value="fine">Fine Line</option><option value="author">Авторская татуировка</option><option value="graphic">Графика</option><option value="sketch">Индивидуальный эскиз</option><option value="cover">Перекрытие</option></select><span class="err"></span></div>
+<div class="f full"><label for="date">Желаемая дата</label><input id="date" name="date" type="date"><span class="err"></span></div>
+<div class="f full"><label for="msg">Сообщение</label><textarea id="msg" name="msg" placeholder="Опишите идею, размер и место на теле"></textarea></div>
+<button class="btn btn-p full" type="submit" style="grid-column:1/-1">Записаться на сеанс</button>
+<p class="note">Нажимая кнопку, вы соглашаетесь на обработку контактных данных для связи по записи.</p>
+</form>
+</div>
+</section>
+
+<section id="contacts">
+<div class="wrap">
+<div class="rv"><h2>Контакты</h2><p class="lead">Два салона в Бишкеке. Работаем ежедневно с 10:00 до 21:00.</p></div>
+<div class="grid3">
+<div class="ct glass rv"><h3>Центр</h3><p>пр. Чуй / ул. Исанова, Бишкек</p><p>Ежедневно 10:00–21:00</p></div>
+<div class="ct glass rv"><h3>Микрорайон 10</h3><p>мкр. 10, Бишкек</p><p>Ежедневно 10:00–21:00</p></div>
+<div class="ct glass rv"><h3>Связаться</h3><a href="tel:+996555123456">+996 555 123 456</a><a href="mailto:hello@inkinnovation.kg">hello@inkinnovation.kg</a><a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a><a href="https://t.me/" target="_blank" rel="noopener">Telegram</a></div>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="wrap">
+<div class="fg">
+<div><a href="#top" class="logo" data-go>INK<b> Innovation</b></a><p style="margin-top:12px;max-width:300px">Современный тату-салон в Бишкеке: авторские эскизы, ИИ-персонализация и цифровая запись.</p></div>
+<div><h4>Навигация</h4><a href="#about" data-go>О салоне</a><a href="#services" data-go>Услуги</a><a href="#works" data-go>Работы</a><a href="#booking" data-go>Запись</a></div>
+<div><h4>Контакты</h4><p>пр. Чуй / ул. Исанова</p><p>мкр. 10, Бишкек</p><a href="tel:+996555123456">+996 555 123 456</a></div>
+</div>
+<div class="copy">© <span id="yr">2026</span> INK Innovation. Все права защищены.</div>
+</div>
+</footer>
+
+<div class="modal" id="m-img" role="dialog" aria-modal="true" aria-label="Просмотр работы">
+<div class="mb glass"><button class="x" data-close aria-label="Закрыть">✕</button><div class="thumb" id="mi-art"></div><h3 id="mi-t"></h3><p id="mi-d"></p><a href="#booking" class="btn btn-p" id="mi-b">Записаться на такую работу</a></div>
+</div>
+<div class="modal" id="m-ok" role="dialog" aria-modal="true" aria-label="Заявка принята">
+<div class="mb glass"><button class="x" data-close aria-label="Закрыть">✕</button><div class="ok">✓</div><h3>Заявка принята!</h3><p id="ok-t">Мы свяжемся с вами в ближайшее время, чтобы подтвердить время сеанса.</p><button class="btn btn-g" data-close>Хорошо</button></div>
+</div>
+
+<script>
+document.documentElement.classList.add("js");
+/* ===== НАСТРОЙКИ ===== */
+// Для реальной отправки заявок укажите адрес сервиса (например, Formspree, Web3Forms или свой сервер).
+// Пока строка пустая, форма работает в демо-режиме: заявка не уходит наружу.
+const FORM_ENDPOINT = "";
+
+// Работы: замените описания и цены на свои. Для реальных фото положите файлы рядом с index.html
+// и добавьте поле img: "photos/work1.jpg" — тогда вместо рисунка покажется фото.
+const WORKS = [
+ {id:"m1",s:"mini",c:"#4a0d20",t:"Мини-тату «Луна и звезда»",d:"Крошечный символ на запястье или за ухом. Чистая линия, сеанс до 40 минут.",p:2000,art:"moon"},
+ {id:"m2",s:"fine",c:"#3a1a08",t:"Fine Line «Ветка»",d:"Тонкая ботаническая линия иглой в одну иглу, подходит для предплечья и рёбер.",p:3000,art:"branch"},
+ {id:"m3",s:"author",c:"#1f2a24",t:"Авторская татуировка «Ала-Арча»",d:"Горный пейзаж ущелья Ала-Арча: пики, ель и солнце. Эскиз рисует мастер под ваш размер.",p:5000,art:"peaks"},
+ {id:"m4",s:"graphic",c:"#2a0a14",t:"Графика «Змея»",d:"Плотная графика с контрастной штриховкой. Выразительна на плече и голени.",p:6000,art:"snake"},
+ {id:"m5",s:"sketch",c:"#3a2a08",t:"Индивидуальный эскиз «Мандала»",d:"Разработка рисунка с нуля: симметрия, орнамент и ваши личные символы.",p:1000,art:"mandala"},
+ {id:"m6",s:"mini",c:"#2b1230",t:"Мини-тату «Минимал-сердце»",d:"Парная или одиночная миниатюра. Быстро, аккуратно и почти не больно.",p:2000,art:"heart"}
+];
+const ART = {
+ moon:'<path d="M250 70a90 90 0 1 0 0 160a70 70 0 0 1 0-160z"/><path d="M110 90l6 14 14 6-14 6-6 14-6-14-14-6 14-6z"/><circle cx="300" cy="120" r="4"/><circle cx="85" cy="210" r="3"/>',
+ branch:'<path d="M70 240C150 200 210 140 330 60"/><path d="M130 205c-6-35 10-55 34-65 6 32-8 55-34 65zM190 165c-4-32 12-52 36-58 4 30-10 50-36 58zM245 120c0-28 14-44 36-48 0 26-12 42-36 48zM160 215c28-6 48 4 62 26-30 8-52 0-62-26zM220 175c26-6 44 2 58 22-28 8-48 2-58-22z"/>',
+ peaks:'<path d="M30 230L120 90l50 70 40-50 110 120z"/><path d="M120 90l-24 40 24-10 18 18M210 110l-14 24 14-8 14 14"/><circle cx="300" cy="70" r="26"/><path d="M60 230v14M80 230v14M330 230v14"/><path d="M280 175l-14 30h28zM280 195l-18 36h36z"/>',
+ snake:'<path d="M80 230c-40-40 20-70 60-50s90 30 110-10-50-50-30-90 70-30 90 0"/><path d="M340 80l22-6-10 18z"/><circle cx="345" cy="82" r="2.5"/><path d="M110 195l10-10M150 205l10-12M200 205l10-10M232 160l12-6M215 115l10-8"/>',
+ mandala:'<circle cx="200" cy="150" r="100"/><circle cx="200" cy="150" r="64"/><circle cx="200" cy="150" r="22"/><path d="M200 50v200M100 150h200M129 79l142 142M271 79L129 221"/><path d="M200 86c-20 16-20 34 0 48 20-14 20-32 0-48zM200 166c-20 16-20 34 0 48 20-14 20-32 0-48z"/>',
+ heart:'<path d="M200 235C90 160 90 85 150 75c30-5 45 15 50 30 5-15 20-35 50-30 60 10 60 85-50 160z"/><path d="M150 100c-14 4-22 16-22 30"/>'
+};
+const REVIEWS = [
+ {n:"Айгерим Т.",c:"Бишкек, мкр. 10",t:"Делала первую татуировку, очень переживала. Мастер Мира подробно всё объяснила, эскиз согласовали за два дня. Заживает отлично, линия идеальная."},
+ {n:"Данияр К.",c:"Бишкек, центр",t:"Перекрыл старую набивку времён юности. Руслан предложил вариант, о котором я бы сам не додумался. Теперь не прячу руку летом."},
+ {n:"Алина С.",c:"Бишкек, Ала-Арча",t:"Заказала горный эскиз «Ала-Арча». Примерка на фото руки помогла выбрать размер. Записалась с телефона за пару минут, ничего не перепутали."},
+ {n:"Эмир Б.",c:"Бишкек, Аламедин",t:"Понравилась стерильность: всё вскрывают при тебе. Тимур сделал графику на плече, детали проработаны до мелочей, цена совпала с названной."},
+ {n:"Жанара М.",c:"Бишкек, Джал",t:"Ходили вдвоём с подругой делать парные мини-тату. Было быстро, спокойно и без лишнего давления. Обязательно вернёмся за большой работой."},
+ {n:"Нурбек А.",c:"Бишкек, Восток-5",t:"Попробовал ИИ-подбор: описал идею словами и получил несколько направлений. Элина нарисовала на их основе уникальный эскиз. Вышло круто."}
+];
+/* ===== УТИЛИТЫ ===== */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const fmt = n => n.toLocaleString("ru-RU").replace(/\u00a0/g, " ") + " KGS";
+const svg = w => w.img ? '<img src="' + w.img + '" alt="' + w.t + '" style="width:100%;height:100%;object-fit:cover;border-radius:10px">'
+ : '<svg viewBox="0 0 400 300" fill="none" stroke="#fef3c7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="' + w.t + '">' + ART[w.art] + '</svg>';
+/* ===== ГАЛЕРЕЯ ===== */
+const grid = $("#works-grid");
+grid.innerHTML = WORKS.map(w =>
+ '<article class="work glass rv" data-s="' + w.s + '"><button class="thumb" style="--c:' + w.c + '" data-open="' + w.id + '" aria-label="Увеличить: ' + w.t + '">' + svg(w) + '</button>' +
+ '<div class="wb"><h3>' + w.t + '</h3><p>' + w.d + '</p><div class="wf"><span class="price">' + fmt(w.p) + '</span><a href="#booking" class="btn btn-p btn-s" data-book="' + w.s + '">Записаться</a></div></div></article>'
+).join("");
+$("#filters").addEventListener("click", e => {
+ const b = e.target.closest(".fb"); if (!b) return;
+ $$(".fb").forEach(x => x.classList.toggle("on", x === b));
+ $$(".work").forEach(c => c.classList.toggle("hide", b.dataset.f !== "all" && c.dataset.s !== b.dataset.f));
+});
+/* ===== ОТЗЫВЫ ===== */
+$("#rev-grid").innerHTML = REVIEWS.map(r =>
+ '<article class="rev glass rv"><div class="stars" aria-label="5 из 5">★★★★★</div><q>' + r.t + '</q><div class="who"><div class="av">' + r.n[0] + '</div><div><strong>' + r.n + '</strong><small>' + r.c + '</small></div></div></article>'
+).join("");
+/* ===== МОДАЛЬНЫЕ ОКНА ===== */
+let lastFocus = null;
+const openM = m => { lastFocus = document.activeElement; m.classList.add("open"); document.body.style.overflow = "hidden"; const c = $("[data-close]", m); if (c) c.focus(); };
+const closeM = () => { $$(".modal.open").forEach(m => m.classList.remove("open")); document.body.style.overflow = ""; if (lastFocus) lastFocus.focus(); };
+document.addEventListener("click", e => {
+ if (e.target.closest("[data-close]") || e.target.classList.contains("modal")) closeM();
+ const o = e.target.closest("[data-open]");
+ if (o) {
+  const w = WORKS.find(x => x.id === o.dataset.open);
+  $("#mi-art").style.setProperty("--c", w.c); $("#mi-art").innerHTML = svg(w);
+  $("#mi-t").textContent = w.t; $("#mi-d").textContent = w.d + " Цена: " + fmt(w.p) + ".";
+  $("#mi-b").dataset.book = w.s; openM($("#m-img"));
+ }
+});
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeM(); });
+/* ===== ПРОКРУТКА И МЕНЮ ===== */
+const burger = $("#burger"), menu = $("#menu");
+const setMenu = on => { menu.classList.toggle("open", on); burger.classList.toggle("on", on); burger.setAttribute("aria-expanded", on); };
+burger.addEventListener("click", () => setMenu(!menu.classList.contains("open")));
+const goTo = id => {
+ const t = id === "#top" ? document.body : $(id); if (!t) return;
+ const y = id === "#top" ? 0 : t.getBoundingClientRect().top + window.scrollY - 70;
+ window.scrollTo({top: y, behavior: "smooth"});
+};
+document.addEventListener("click", e => {
+ const a = e.target.closest('a[href^="#"]'); if (!a) return;
+ e.preventDefault(); setMenu(false);
+ if (a.dataset.book) { $("#style").value = a.dataset.book; if (e.target.closest(".modal")) closeM(); }
+ goTo(a.getAttribute("href"));
+});
+const hd = $("#hd");
+const onScroll = () => hd.classList.toggle("sc", window.scrollY > 20);
+window.addEventListener("scroll", onScroll, {passive: true}); onScroll();
+/* ===== ПОЯВЛЕНИЕ И СЧЁТЧИКИ ===== */
+const count = el => {
+ const t = parseFloat(el.dataset.t), d = +el.dataset.d || 0, dur = 1800, t0 = performance.now();
+ const step = now => { const k = Math.min((now - t0) / dur, 1), v = t * (1 - Math.pow(1 - k, 3));
+  el.textContent = d ? v.toFixed(d).replace(".", ",") : Math.round(v).toLocaleString("ru-RU"); if (k < 1) requestAnimationFrame(step); };
+ requestAnimationFrame(step);
+};
+if ("IntersectionObserver" in window) {
+ const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); $$(".cnt", en.target).forEach(count); io.unobserve(en.target); } }), {threshold: .15});
+ $$(".rv").forEach((el, i) => { el.style.transitionDelay = (i % 3) * 90 + "ms"; io.observe(el); });
+} else { $$(".rv").forEach(el => el.classList.add("in")); $$(".cnt").forEach(count); }
+/* ===== ФОРМА ===== */
+const form = $("#form"), dateEl = $("#date");
+const today = new Date(); today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
+dateEl.min = today.toISOString().slice(0, 10);
+const setErr = (id, msg) => { const f = $("#" + id).closest(".f"); $(".err", f).textContent = msg; f.classList.toggle("bad", !!msg); return !msg; };
+const check = () => {
+ const n = $("#name").value.trim(), p = $("#phone").value.replace(/[\s()-]/g, "");
+ let ok = true;
+ ok = setErr("name", n.length >= 2 ? "" : "Введите имя (минимум 2 буквы)") && ok;
+ ok = setErr("phone", /^\+996\d{9}$/.test(p) ? "" : "Формат: +996 555 123 456") && ok;
+ ok = setErr("master", $("#master").value ? "" : "Выберите мастера") && ok;
+ ok = setErr("style", $("#style").value ? "" : "Выберите стиль") && ok;
+ ok = setErr("date", dateEl.value && dateEl.value >= dateEl.min ? "" : "Выберите дату не раньше сегодняшней") && ok;
+ return ok;
+};
+["name", "phone", "master", "style", "date"].forEach(id => $("#" + id).addEventListener("change", check));
+form.addEventListener("submit", async e => {
+ e.preventDefault(); if (!check()) return;
+ const btn = $("button[type=submit]", form), label = btn.textContent;
+ btn.disabled = true; btn.textContent = "Отправляем…";
+ try {
+  if (FORM_ENDPOINT) {
+   const r = await fetch(FORM_ENDPOINT, {method: "POST", headers: {"Accept": "application/json"}, body: new FormData(form)});
+   if (!r.ok) throw new Error("bad status");
+  }
+  $("#ok-t").textContent = "Спасибо, " + $("#name").value.trim() + "! Мы позвоним на " + $("#phone").value.trim() + ", чтобы подтвердить время сеанса.";
+  form.reset(); openM($("#m-ok"));
+ } catch (err) {
+  alert("Не удалось отправить заявку. Позвоните нам: +996 555 123 456");
+ } finally { btn.disabled = false; btn.textContent = label; }
+});
+$("#yr").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
